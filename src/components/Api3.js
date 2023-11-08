@@ -189,33 +189,36 @@ const Api3 = () => {
     <React.Fragment>
       <Card sx={{ width: { xs: 345, md: 645 }, minHeight: 200 }}>
         <Stack direction={{ xs: "column", md: "row" }} alignItems="center" justifyContent="space-between" sx={{ p: 1 }}>
-          <Typography>
+          <Typography sx={{ pt: 2.5 }} >
             API #3: "Market Research"
           </Typography>
-          <Stack direction="row" alignItems="center" spacing={2}>
-            <TextField 
-              variant="outlined"
-              size="small"
-              hiddenLabel
-              placeholder="Search Public Company"
-              value={query || ""}
-              onChange={(event) => setQuery(event.target.value)}
-              InputProps={{
-                endAdornment: (
-                  query ?
-                    <InputAdornment position="end">
-                      <IconButton
-                        onClick={handleClear}
-                        edge="end"
-                      >
-                        <CloseIcon />
-                      </IconButton>
-                    </InputAdornment>
-                  : null
-                ),
-              }}
-              sx={{ width: 250 }}
-            />
+          <Stack direction="row" alignItems="flex-end" spacing={2}>
+            <Stack direction="column">
+              <FormHelperText sx={{ m: 0, p: 0 }}>Example: "Facebook"</FormHelperText>
+              <TextField 
+                variant="outlined"
+                size="small"
+                hiddenLabel
+                placeholder="Search Public Company"
+                value={query || ""}
+                onChange={(event) => setQuery(event.target.value)}
+                InputProps={{
+                  endAdornment: (
+                    query ?
+                      <InputAdornment position="end">
+                        <IconButton
+                          onClick={handleClear}
+                          edge="end"
+                        >
+                          <CloseIcon />
+                        </IconButton>
+                      </InputAdornment>
+                    : null
+                  ),
+                }}
+                sx={{ width: 250 }}
+              />
+            </Stack>
             <Button
               size="large"
               variant="contained"
