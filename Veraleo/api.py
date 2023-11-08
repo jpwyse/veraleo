@@ -13,6 +13,8 @@ from . utils import clean_data, YFinance
 
 # Create your api's here.
 
+api_key = config('CNBC_API_KEY')
+
 router = Router()
 
 # GET CREATOR NAME
@@ -56,7 +58,6 @@ def wiki(request, query: str):
 # GET TICKERS FROM QUERY
 @router.get("/tickers/{query}")
 def tickers(request, query: str):
-	api_key = "551bc20470msh90cb4e541ae53b2p16af81jsnc6a78379e80e"
 	url = "https://cnbc.p.rapidapi.com/v2/auto-complete"
 	params = {"q": query}
 	headers = {
@@ -97,9 +98,7 @@ def data(request, ticker: str):
 # GET INDUSTRY DATA RESEARCH
 @router.get("/news/{ticker}")
 def news(request, ticker: str):
-	api_key = config('CNBC_API_KEY')
 	news = []
-
 	try:
 		response = cnbc.list_symbol_news(symbol=ticker, api_key=api_key)
 		results = response["data"]["symbolEntries"]["results"]
